@@ -1,7 +1,0 @@
-Hola Mundo
-
-Mis cambios en el mismo archivo desde Local
-
-
-cambios que se estan haciendo editando el mismo archivo desde el servidor
-

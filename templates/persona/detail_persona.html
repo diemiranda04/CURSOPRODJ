@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block tittle %}
+    Detalles Empleados
+{% endblock tittle %}
+    
+
+{% block content %}
+    
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+          <a href=" {% url 'persona_app:modificar_empleado' empleado.id %}">
+            <div class="cell large-4 card " style="width: 300px; margin-top: 10px;">
+                <div class="card-divider">
+                  {{empleado.get_job_display}}
+                </div>
+                
+                {% if empleado.avatar %}
+                    <img src="{{empleado.avatar.url}}" style=" height:300px">
+                {% else %}
+                    <img src="{% static 'img/Hello.jpg' %}">
+                {% endif %}                    
+                
+                <div class="card-section">
+                  <h4>{{empleado.first_name}} {{empleado.last_name}}.</h4>
+                  <p>{{empleado.departamento.name}}.</p>
+                  <p><span class="label">Habilidades:</span></p>
+                  <ul class="vertical menu">                      
+                      {% for h in empleado.habilidades.all  %}
+                        <li>{{h.habilidad}}</li>
+                      {% endfor %}                    
+                  </ul>
+                </div>
+              </div>
+          </a>
+        </div>
+    </div>
+{% endblock content %}    
+
+
